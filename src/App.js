@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactComponent from "./components/react-component";
+import "./App.css";
+import FunctionalComponent from "./components/functional-component";
+import ReactPureComponent from "./components/react-pure-component";
+import ReactDom from "react-dom";
+import React from "react";
 
 function App() {
+  const element = <h1>Hello from React.CreateElement</h1>;
+  ReactDom.render(element, document.getElementById("element"));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello, World!</h1>
+      <ReactComponent></ReactComponent>
+      <ReactPureComponent></ReactPureComponent>
+      <FunctionalComponent></FunctionalComponent>
     </div>
   );
 }
