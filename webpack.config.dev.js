@@ -4,15 +4,6 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: path.resolve(__dirname, "./src/index.js"),
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"]
-      }
-    ]
-  },
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"],
     extensions: [".js", ".jsx", ".json"]
@@ -27,6 +18,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      },
       {
         test: /\.html$/,
         exclude: /node_modules/,
