@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 
 class ReactComponent extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return <h1>Hello from React.Component</h1>;
   }
