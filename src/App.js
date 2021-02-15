@@ -6,7 +6,12 @@ import ReactDom from "react-dom";
 import React from "react";
 
 function App() {
-  const element = <h1>Hello from React.CreateElement</h1>;
+  const element = React.createElement(
+    "h1",
+    null,
+    "Hello from React.CreateElement"
+  );
+
   ReactDom.render(element, document.getElementById("element"));
 
   return (
