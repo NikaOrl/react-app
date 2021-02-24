@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start:prod": "cross-env NODE_ENV=production webpack serve",
     "start:dev": "cross-env NODE_ENV=development webpack serve --open 'Chrome'",
     "build:prod": "cross-env NODE_ENV=production webpack -p",
