@@ -1,0 +1,32 @@
+@import "../../variables";
+
+.item-preview {
+  max-width: 30%;
+  margin-bottom: 1em;
+
+  &__poster {
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      font-weight: 100;
+      color: $light-grey;
+    }
+  }
+
+  &__release-date {
+    border: 1px solid $light-grey;
+    color: $light-grey;
+    padding: 1px 5px;
+  }
+
+  &__genres {
+    color: $light-grey;
+    font-size: 12px;
+  }
+}

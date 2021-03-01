@@ -1,0 +1,25 @@
+@import "../../variables";
+
+.btn {
+  width: 100%;
+  border: none;
+  transition: 0.3s ease;
+  font-size: 16px;
+  white-space: nowrap;
+  height: 48px;
+  width: 180px;
+
+  &.pink {
+    background-color: $pink;
+    color: $white;
+  }
+
+  &.grey {
+    background: $transparent-grey;
+    color: $pink;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

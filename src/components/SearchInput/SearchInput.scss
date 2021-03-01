@@ -1,0 +1,33 @@
+@import "../../variables";
+
+.search {
+  display: flex;
+  margin-bottom: 1em;
+
+  &__input-group {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__input {
+    padding: 18px 15px;
+    width: 100%;
+    border: none;
+    color: $white;
+    background: $dark-grey;
+    transition: 0.3s ease;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__bottom-border {
+    background: $pink;
+    height: 5px;
+  }
+
+  &__form-btn {
+    display: flex;
+  }
+}

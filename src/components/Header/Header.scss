@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.logo {
+  color: $red;
+}
+
+header {
+  color: $red;
+  background: linear-gradient(
+      45deg,
+      rgba(103, 0, 31, 0.8),
+      rgba(34, 101, 163, 0.5)
+    ),
+    url(../../assets/background.jpg);
+  background-size: cover;
+  padding: 0 10em;
+}
+
+.add-button {
+  width: min-content;
+  margin-left: auto;
+}

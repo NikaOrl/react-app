@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: path.resolve(__dirname, "./src/index.js"),
+  entry: path.resolve(__dirname, "./src/index.jsx"),
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"],
     extensions: [".js", ".jsx", ".json"]
@@ -18,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
@@ -37,6 +37,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: { name: "img/[name].[ext]" }
+          }
+        ]
       }
     ]
   },
