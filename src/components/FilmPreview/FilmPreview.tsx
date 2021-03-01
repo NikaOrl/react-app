@@ -2,7 +2,15 @@ import React from "react";
 
 import "./FilmPreview.scss";
 
-const FilmPreview = props => {
+export interface IFilm {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  genres: string[];
+}
+
+const FilmPreview = (props: IFilm) => {
   return (
     <div className="item-preview">
       <img
@@ -20,7 +28,7 @@ const FilmPreview = props => {
           </span>
         </div>
       </div>
-      <div className="item-preview__genres">{props.filmGenres}</div>
+      <div className="item-preview__genres">{props.genres.join(" & ")}</div>
     </div>
   );
 };

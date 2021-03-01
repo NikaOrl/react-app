@@ -2,7 +2,18 @@ import React from "react";
 
 import "./RadioButton.scss";
 
-const RadioButton = props => {
+interface Props {
+  title?: string;
+  options: IButton[];
+}
+
+interface IButton {
+  id: string;
+  isChecked: boolean;
+  title: string;
+}
+
+const RadioButton = (props: Props) => {
   return (
     <div className="radio-buttons">
       {props.title ? (

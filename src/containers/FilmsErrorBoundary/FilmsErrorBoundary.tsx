@@ -1,12 +1,18 @@
 import React from "react";
 
-class FilmsErrorBoundary extends React.Component {
-  constructor(props) {
+interface Props {}
+
+interface State {
+  hasError: boolean;
+}
+
+class FilmsErrorBoundary extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }

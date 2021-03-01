@@ -1,15 +1,19 @@
 import React from "react";
 
-import FilmPreview from "../FilmPreview/FilmPreview";
+import FilmPreview, { IFilm } from "../FilmPreview/FilmPreview";
 
 import "./FilmsList.scss";
 
-const FilmsList = props => {
+interface Props {
+  films: IFilm[];
+}
+
+const FilmsList = (props: Props) => {
   return (
     <div className="films">
       <div className="films__count">{props.films.length} movies found</div>
       <div className="films__list">
-        {props.films.map(movie => (
+        {props.films.map((movie: IFilm) => (
           <FilmPreview
             key={movie.id}
             title={movie.title}

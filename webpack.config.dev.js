@@ -3,10 +3,10 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, "./src/index.jsx"),
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"],
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".js", ".tsx", "jsx", ".ts", ".json"]
   },
   devtool: "source-map",
   output: {
@@ -22,6 +22,11 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
+      },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,

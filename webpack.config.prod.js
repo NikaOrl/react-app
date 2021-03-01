@@ -3,17 +3,14 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: path.resolve(__dirname, "./src/index.jsx"),
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"],
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".js", ".tsx", "jsx", ".ts", ".json"]
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js"
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, "./dist")
   },
   module: {
     rules: [
@@ -23,6 +20,11 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
