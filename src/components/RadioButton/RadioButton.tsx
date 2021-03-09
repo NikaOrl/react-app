@@ -18,9 +18,7 @@ const RadioButton = (props: Props) => {
     <div className="radio-buttons">
       {props.title ? (
         <div className="radio-buttons__title">{props.title}</div>
-      ) : (
-        <></>
-      )}
+      ) : null}
       {props.options.map(btn => (
         <label key={btn.id}>
           <input
