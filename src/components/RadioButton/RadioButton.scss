@@ -1,0 +1,30 @@
+@import "../../variables";
+
+.radio-buttons {
+  display: flex;
+
+  &__item {
+    display: none;
+  }
+
+  &__title {
+    margin: auto 1em auto 0;
+  }
+
+  &__item:checked + &__box {
+    background-color: $pink;
+  }
+
+  &__box {
+    background-color: $dark-grey;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 20px;
+
+    span {
+      color: $white;
+    }
+  }
+}

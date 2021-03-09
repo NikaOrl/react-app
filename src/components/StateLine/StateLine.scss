@@ -1,0 +1,9 @@
+@import "../../variables";
+
+.state-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10em;
+  color: $white;
+  background-color: $grey;
+}

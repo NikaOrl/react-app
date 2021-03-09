@@ -3,26 +3,28 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: path.resolve(__dirname, "./src/index.js"),
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"],
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".js", ".tsx", "jsx", ".ts", ".json"]
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js"
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, "./dist")
-  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
@@ -37,6 +39,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: { name: "img/[name].[ext]" }
+          }
+        ]
       }
     ]
   },
