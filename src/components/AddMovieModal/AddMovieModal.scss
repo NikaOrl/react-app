@@ -1,0 +1,9 @@
+@import "../../variables";
+
+.add-modal {
+  &__header {
+    font-weight: 100;
+    color: $white;
+    padding: 0 60px 20px;
+  }
+}

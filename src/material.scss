@@ -1,0 +1,57 @@
+@import "./variables";
+
+.MuiTextField-root {
+  display: block !important;
+  padding: 20px 60px !important;
+
+  label,
+  .Mui-focused {
+    color: $pink !important;
+    font-size: 18px;
+  }
+
+  .MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(70px, 10px) scale(0.75);
+    font-size: 22px;
+  }
+
+  .MuiInputLabel-outlined {
+    transform: translate(74px, 40px) scale(1);
+  }
+
+  .MuiOutlinedInput-root {
+    width: 100%;
+    background-color: $grey;
+    font-size: 18px;
+    color: $white !important;
+
+    input:disabled {
+      background-color: $dark-grey;
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      color: $white;
+      border-color: $dark-grey !important;
+    }
+  }
+}
+
+.item-preview .MuiButtonBase-root {
+  position: absolute !important;
+  right: 0;
+  top: 10px;
+
+  .MuiButton-label {
+    align-items: inherit;
+    justify-content: inherit;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    background-color: $dark-grey;
+
+    svg {
+      fill: $white;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../variables";
+
+.movie-form {
+  &__buttons-container {
+    margin-left: auto;
+    width: fit-content;
+    padding: 0 55px 35px;
+
+    button {
+      margin: 5px;
+    }
+  }
+}
