@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import films from "../../mocks/films.json";
 
@@ -11,17 +11,7 @@ interface FilmsContainerProps {
 }
 
 const FilmsContainer = (props: FilmsContainerProps) => {
-  const [sort, setSort] = React.useState(props.sort);
-
-  const handleSortChange = (sort: string) => {
-    setSort(sort as SortValues);
-  };
-
-  useEffect(() => {
-    handleSortChange(props.sort);
-  });
-
-  return <FilmsList sort={sort} films={films as IFilm[]} />;
+  return <FilmsList sort={props.sort} films={films as IFilm[]} />;
 };
 
 export default FilmsContainer;

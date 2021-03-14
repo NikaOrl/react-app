@@ -90,7 +90,8 @@ const MovieForm = (props: Props) => {
       title: title,
       genres: [genre],
       poster_path: url,
-      release_date: selectedDate
+      release_date: selectedDate,
+      overview: overview
     });
   };
 
