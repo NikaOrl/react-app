@@ -5,6 +5,7 @@ import "./RadioButton.scss";
 interface Props {
   title?: string;
   options: IButton[];
+  onValueChange: (id: string) => void;
 }
 
 interface IButton {
@@ -14,6 +15,15 @@ interface IButton {
 }
 
 const RadioButton = (props: Props) => {
+  const [value, setValue] = React.useState(
+    props.options.find((option: IButton) => option.isChecked)
+  );
+
+  const onValueChange = (btn: IButton) => () => {
+    props.onValueChange(btn.id);
+    setValue(btn);
+  };
+
   return (
     <div className="radio-buttons">
       {props.title ? (
@@ -24,7 +34,8 @@ const RadioButton = (props: Props) => {
           <input
             className="radio-buttons__item"
             type="radio"
-            defaultChecked={btn.isChecked}
+            checked={value?.id === btn.id}
+            onChange={onValueChange(btn)}
           />
           <div className="radio-buttons__box">
             <span>{btn.title}</span>

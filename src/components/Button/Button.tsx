@@ -7,6 +7,7 @@ interface Props {
   theme?: string;
   height?: string;
   width?: string;
+  onClick?: () => void;
 }
 
 const Button = (props: Props) => {
@@ -14,6 +15,7 @@ const Button = (props: Props) => {
     <button
       style={{ height: props.height, width: props.width }}
       className={`btn ${props.theme ? props.theme : "pink"}`}
+      onClick={props.onClick}
     >
       {props.title}
     </button>

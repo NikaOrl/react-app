@@ -4,7 +4,16 @@ import RadioButton from "../RadioButton/RadioButton";
 
 import "./StateLine.scss";
 
-const StateLine = () => {
+export enum SortValues {
+  RATING = "rating",
+  RELEASE_DATE = "release_date"
+}
+
+interface StateLineProps {
+  handleSortChange: (id: string) => void;
+}
+
+const StateLine = (props: StateLineProps) => {
   const genreOptions = [
     {
       title: "ALL",
@@ -37,19 +46,25 @@ const StateLine = () => {
     {
       title: "RELEASE DATE",
       isChecked: true,
-      id: "1"
+      id: SortValues.RELEASE_DATE
     },
     {
       title: "RATING",
       isChecked: false,
-      id: "2"
+      id: SortValues.RATING
     }
   ];
 
+  const handleGanreChange = (id: string) => {};
+
   return (
     <div className="state-line">
-      <RadioButton options={genreOptions} />
-      <RadioButton title="SORT BY" options={sorftOptions} />
+      <RadioButton options={genreOptions} onValueChange={handleGanreChange} />
+      <RadioButton
+        title="SORT BY"
+        options={sorftOptions}
+        onValueChange={props.handleSortChange}
+      />
     </div>
   );
 };
