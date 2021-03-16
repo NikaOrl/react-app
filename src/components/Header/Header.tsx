@@ -1,15 +1,13 @@
 import React from "react";
 
-import films from "../../mocks/films.json";
-
 import AddMovieModal from "../AddMovieModal/AddMovieModal";
 import Button from "../Button/Button";
 import SearchForm from "../SearchForm/SearchForm";
 import ModalWindow from "../ModalWindow/ModalWindow";
-import { IFilm } from "../FilmPreview/FilmPreview";
+import FilmItem from "../FilmItem/FilmItem";
+import { IFilm } from "../../models/film.model";
 
 import "./Header.scss";
-import FilmItem from "../FilmItem/FilmItem";
 
 interface HeaderProps {
   handleAdd: (film: IFilm) => void;
@@ -41,7 +39,7 @@ const Header = (props: HeaderProps) => {
         <Button title="+ ADD MOVIE" theme="grey" onClick={handleOpen} />
       </div>
       <SearchForm /> */}
-      <FilmItem film={films[0]} />
+      <FilmItem />
     </header>
   );
 };

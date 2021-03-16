@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import FilmPreview, { IFilm } from "../FilmPreview/FilmPreview";
+import { IFilm } from "../../models/film.model";
+import FilmPreview from "../FilmPreview/FilmPreview";
 import { SortValues } from "../StateLine/StateLine";
 
 import "./FilmsList.scss";
@@ -20,6 +21,10 @@ const sortFilms = (filmsToSort: IFilm[], sort: SortValues) =>
 
 const FilmsList = (props: FilmsListProps) => {
   const [films, setFilms] = React.useState(props.films);
+
+  useEffect(() => {
+    setFilms(props.films);
+  }, [props.films]);
 
   const handleDelete = (id: number) => {
     const filteredFilms = films.filter((film: IFilm) => film.id !== id);

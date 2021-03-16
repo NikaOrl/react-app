@@ -1,7 +1,7 @@
 import React from "react";
 
 import MovieForm from "../MovieForm/MovieForm";
-import { IFilm } from "../FilmPreview/FilmPreview";
+import { IFilm } from "../../models/film.model";
 
 import "./AddMovieModal.scss";
 

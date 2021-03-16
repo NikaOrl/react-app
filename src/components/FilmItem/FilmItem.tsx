@@ -1,6 +1,7 @@
 import React from "react";
 
-import { IFilm } from "../FilmPreview/FilmPreview";
+import { fetchFilms, useAsync } from "../../utils/asyncHook";
+import { IFilm } from "../../models/film.model";
 
 import "./FilmItem.scss";
 
@@ -8,20 +9,22 @@ export interface FilmItemProps {
   film: IFilm;
 }
 
-const FilmItem = (props: FilmItemProps) => {
-  return props.film ? (
+const FilmItem = () => {
+  const film = useAsync(fetchFilms);
+
+  return film[0] ? (
     <div className="film-item">
       <div className="film-item__img">
-        <img src={props.film.poster_path} alt={props.film.title} />
+        <img src={film[0].poster_path} alt={film[0].title} />
       </div>
       <div className="film-item__info">
         <div className="film-item__title-and-raiting">
-          <h1>{props.film.title}</h1>
+          <h1>{film[0].title}</h1>
         </div>
         <div className="film-item__release-date">
-          <span>{props.film.release_date}</span> year
+          <span>{film[0].release_date}</span> year
         </div>
-        <div className="film-item__overview">{props.film.overview}</div>
+        <div className="film-item__overview">{film[0].overview}</div>
       </div>
     </div>
   ) : (

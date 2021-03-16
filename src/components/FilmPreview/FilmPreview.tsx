@@ -6,20 +6,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import DeleteMovieModal from "../DeleteMovieModal/DeleteMovieModal";
 import EditMovieModal from "../EditMovieModal/EditMovieModal";
+import { IFilm } from "../../models/film.model";
 
 import "./FilmPreview.scss";
 import MySVG from "-!svg-react-loader!../../assets/kebab-menu.svg";
 
-export interface IFilm {
-  id: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  genres: string[];
-  overview: string;
-}
-
-export interface FilmPreviewProps {
+interface FilmPreviewProps {
   film: IFilm;
   onDelete: (id: number) => void;
   onEdit: (film: IFilm) => void;
