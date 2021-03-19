@@ -4,7 +4,8 @@ import AddMovieModal from "../AddMovieModal/AddMovieModal";
 import Button from "../Button/Button";
 import SearchForm from "../SearchForm/SearchForm";
 import ModalWindow from "../ModalWindow/ModalWindow";
-import { IFilm } from "../FilmPreview/FilmPreview";
+import FilmItem from "../FilmItem/FilmItem";
+import { IFilm } from "../../models/film.model";
 
 import "./Header.scss";
 
@@ -30,14 +31,19 @@ const Header = (props: HeaderProps) => {
 
   return (
     <header>
-      <div className="logo">NETFLIX ROULETTE</div>
-      <ModalWindow open={open} onClose={handleClose}>
+      <div className="header-links">
+        <div className="header-links__logo">NETFLIX ROULETTE</div>
+        <Button title="Search" theme="grey"></Button>
+      </div>
+
+      {/* <ModalWindow open={open} onClose={handleClose}>
         <AddMovieModal onAdd={onAdd} />
       </ModalWindow>
       <div className="add-button">
         <Button title="+ ADD MOVIE" theme="grey" onClick={handleOpen} />
       </div>
-      <SearchForm />
+      <SearchForm /> */}
+      <FilmItem />
     </header>
   );
 };

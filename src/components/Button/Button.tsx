@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Button.scss";
 
-interface Props {
+interface ButtonProps {
   title: string;
   theme?: string;
   height?: string;
@@ -10,7 +10,7 @@ interface Props {
   onClick?: () => void;
 }
 
-const Button = (props: Props) => {
+const Button = (props: ButtonProps) => {
   return (
     <button
       style={{ height: props.height, width: props.width }}

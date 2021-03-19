@@ -1,27 +1,17 @@
-import React, { useEffect } from "react";
-
-import films from "../../mocks/films.json";
+import React from "react";
 
 import FilmsList from "../../components/FilmsList/FilmsList";
-import { IFilm } from "../../components/FilmPreview/FilmPreview";
 import { SortValues } from "../../components/StateLine/StateLine";
+import { fetchFilms, useAsync } from "../../utils/asyncHook";
 
 interface FilmsContainerProps {
   sort: SortValues;
 }
 
 const FilmsContainer = (props: FilmsContainerProps) => {
-  const [sort, setSort] = React.useState(props.sort);
+  const films = useAsync(fetchFilms);
 
-  const handleSortChange = (sort: string) => {
-    setSort(sort as SortValues);
-  };
-
-  useEffect(() => {
-    handleSortChange(props.sort);
-  });
-
-  return <FilmsList sort={sort} films={films as IFilm[]} />;
+  return <FilmsList sort={props.sort} films={films} />;
 };
 
 export default FilmsContainer;

@@ -2,16 +2,16 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 
 import MovieForm from "../MovieForm/MovieForm";
-import { IFilm } from "../FilmPreview/FilmPreview";
+import { IFilm } from "../../models/film.model";
 
 import "./EditMovieModal.scss";
 
-interface Props {
+interface EditMovieModalProps {
   film: IFilm;
   onEdit: (film: IFilm) => void;
 }
 
-const EditMovieModal = (props: Props) => {
+const EditMovieModal = (props: EditMovieModalProps) => {
   return (
     <div className="edit-modal">
       <h1 className="edit-modal__header">EDIT MOVIE</h1>

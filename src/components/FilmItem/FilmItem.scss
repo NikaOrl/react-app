@@ -1,0 +1,54 @@
+@import "../../variables";
+
+.film-item {
+  display: flex;
+  background-color: $dark-grey;
+  margin-top: 80px;
+  color: $white;
+
+  &__rating {
+    width: 60px;
+    display: inline-block;
+    height: 60px;
+    border-radius: 50%;
+    font: 100 32px Arial;
+    margin-left: 10px;
+    text-align: center;
+    padding-top: 12px;
+    box-sizing: border-box;
+    border: solid 1px $white;
+  }
+
+  &__img {
+    margin: 30px;
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    margin: 30px;
+  }
+
+  &__title-and-raiting {
+    margin-bottom: 2em;
+
+    h1 {
+      color: $white;
+      font: 100 32px Arial;
+      display: inline-block;
+    }
+  }
+
+  &__release-date {
+    color: $light-grey;
+    margin-bottom: 0.5em;
+  }
+
+  &__release-date span {
+    color: $pink;
+  }
+
+  &__overview {
+    color: var(--white-color);
+  }
+}

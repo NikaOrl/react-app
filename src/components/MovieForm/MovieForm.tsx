@@ -3,7 +3,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 
 import Button from "../Button/Button";
-import { IFilm } from "../FilmPreview/FilmPreview";
+import { IFilm } from "../../models/film.model";
 
 import "./MovieForm.scss";
 
@@ -90,7 +90,8 @@ const MovieForm = (props: Props) => {
       title: title,
       genres: [genre],
       poster_path: url,
-      release_date: selectedDate
+      release_date: selectedDate,
+      overview: overview
     });
   };
 
