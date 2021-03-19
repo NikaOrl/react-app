@@ -1,11 +1,7 @@
 @import "../../variables";
 
-.logo {
-  color: $red;
-}
-
 header {
-  color: $red;
+  color: $pink;
   background: linear-gradient(
       45deg,
       rgba(103, 0, 31, 0.8),
@@ -14,6 +10,11 @@ header {
     url(../../assets/background.jpg);
   background-size: cover;
   padding: 0 10em;
+
+  .header-links {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .add-button {

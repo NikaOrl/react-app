@@ -20,6 +20,7 @@ const FilmItem = () => {
       <div className="film-item__info">
         <div className="film-item__title-and-raiting">
           <h1>{film[0].title}</h1>
+          <div className="film-item__rating">{film[0].vote_average}</div>
         </div>
         <div className="film-item__release-date">
           <span>{film[0].release_date}</span> year

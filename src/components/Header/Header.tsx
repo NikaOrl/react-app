@@ -31,7 +31,11 @@ const Header = (props: HeaderProps) => {
 
   return (
     <header>
-      <div className="logo">NETFLIX ROULETTE</div>
+      <div className="header-links">
+        <div className="header-links__logo">NETFLIX ROULETTE</div>
+        <Button title="Search" theme="grey"></Button>
+      </div>
+
       {/* <ModalWindow open={open} onClose={handleClose}>
         <AddMovieModal onAdd={onAdd} />
       </ModalWindow>
