@@ -13,7 +13,7 @@ interface HeaderProps {
   handleAdd: (film: IFilm) => void;
 }
 
-const Header = (props: HeaderProps) => {
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {

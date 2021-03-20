@@ -9,7 +9,9 @@ interface AddMovieModalProps {
   onAdd: (film: IFilm) => void;
 }
 
-const AddMovieModal = (props: AddMovieModalProps) => {
+const AddMovieModal: React.FC<AddMovieModalProps> = (
+  props: AddMovieModalProps
+) => {
   return (
     <div className="add-modal">
       <h1 className="add-modal__header">ADD MOVIE</h1>

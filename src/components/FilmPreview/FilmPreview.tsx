@@ -17,7 +17,7 @@ interface FilmPreviewProps {
   onEdit: (film: IFilm) => void;
 }
 
-const FilmPreview = (props: FilmPreviewProps) => {
+const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openEditModal, setOpenEditModal] = React.useState(false);
   const [openDeleteModal, setOpenDeleteModal] = React.useState(false);

@@ -8,7 +8,9 @@ interface DeleteMovieModalProps {
   onDelete: () => void;
 }
 
-const DeleteMovieModal = (props: DeleteMovieModalProps) => {
+const DeleteMovieModal: React.FC<DeleteMovieModalProps> = (
+  props: DeleteMovieModalProps
+) => {
   return (
     <div className="delete-modal">
       <h1 className="delete-modal__header">DELETE MOVIE</h1>

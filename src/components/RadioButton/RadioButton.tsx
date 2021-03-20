@@ -2,7 +2,7 @@ import React from "react";
 
 import "./RadioButton.scss";
 
-interface Props {
+interface RadioButtonProps {
   title?: string;
   options: IButton[];
   onValueChange: (id: string) => void;
@@ -14,7 +14,7 @@ interface IButton {
   title: string;
 }
 
-const RadioButton = (props: Props) => {
+const RadioButton: React.FC<RadioButtonProps> = (props: RadioButtonProps) => {
   const [value, setValue] = React.useState(
     props.options.find((option: IButton) => option.isChecked)
   );

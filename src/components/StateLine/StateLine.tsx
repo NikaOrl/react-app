@@ -13,7 +13,7 @@ interface StateLineProps {
   handleSortChange: (id: string) => void;
 }
 
-const StateLine = (props: StateLineProps) => {
+const StateLine: React.FC<StateLineProps> = (props: StateLineProps) => {
   const genreOptions = [
     {
       title: "ALL",

@@ -3,13 +3,13 @@ import Modal from "@material-ui/core/Modal";
 
 import "./ModalWindow.scss";
 
-interface Props {
+interface ModalWindowProps {
   open: boolean;
   onClose: () => void;
   children: JSX.Element;
 }
 
-const ModalWindow = (props: Props) => {
+const ModalWindow: React.FC<ModalWindowProps> = (props: ModalWindowProps) => {
   return (
     <Modal open={props.open} onClose={props.onClose}>
       <div className="modal">

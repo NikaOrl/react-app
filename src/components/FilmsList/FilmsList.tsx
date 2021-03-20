@@ -6,7 +6,7 @@ import { SortValues } from "../StateLine/StateLine";
 
 import "./FilmsList.scss";
 
-export interface FilmsListProps {
+interface FilmsListProps {
   films: IFilm[];
   sort: SortValues;
 }
@@ -19,7 +19,7 @@ const sortFilms = (filmsToSort: IFilm[], sort: SortValues) =>
     return film1.title > film2.title ? -1 : 1;
   });
 
-const FilmsList = (props: FilmsListProps) => {
+const FilmsList: React.FC<FilmsListProps> = (props: FilmsListProps) => {
   const [films, setFilms] = React.useState(props.films);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { IFilm } from "../../models/film.model";
 
 import "./MovieForm.scss";
 
-interface Props {
+interface MovieFormProps {
   film?: IFilm;
   onSubmit: (film: IFilm) => void;
 }
@@ -31,7 +31,7 @@ const genres = [
   }
 ];
 
-const MovieForm = (props: Props) => {
+const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => {
   const [title, setTitle] = React.useState(props.film ? props.film.title : "");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

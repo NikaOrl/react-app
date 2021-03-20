@@ -1,15 +1,10 @@
 import React from "react";
 
 import { fetchFilms, useAsync } from "../../utils/asyncHook";
-import { IFilm } from "../../models/film.model";
 
 import "./FilmItem.scss";
 
-export interface FilmItemProps {
-  film: IFilm;
-}
-
-const FilmItem = () => {
+const FilmItem: React.FC = () => {
   const film = useAsync(fetchFilms);
 
   return film[0] ? (

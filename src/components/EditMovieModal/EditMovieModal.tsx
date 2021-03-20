@@ -11,7 +11,9 @@ interface EditMovieModalProps {
   onEdit: (film: IFilm) => void;
 }
 
-const EditMovieModal = (props: EditMovieModalProps) => {
+const EditMovieModal: React.FC<EditMovieModalProps> = (
+  props: EditMovieModalProps
+) => {
   return (
     <div className="edit-modal">
       <h1 className="edit-modal__header">EDIT MOVIE</h1>

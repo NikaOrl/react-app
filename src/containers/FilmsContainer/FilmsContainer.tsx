@@ -8,7 +8,9 @@ interface FilmsContainerProps {
   sort: SortValues;
 }
 
-const FilmsContainer = (props: FilmsContainerProps) => {
+const FilmsContainer: React.FC<FilmsContainerProps> = (
+  props: FilmsContainerProps
+) => {
   const films = useAsync(fetchFilms);
 
   return <FilmsList sort={props.sort} films={films} />;
