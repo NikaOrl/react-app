@@ -7,3 +7,6 @@ export const GET_FILM_SUCCESS = "GET_FILM_SUCCESS";
 
 export const FILMS_STARTED = "FILMS_STARTED";
 export const FILMS_FAILURE = "FILMS_FAILURE";
+
+export const CHANGE_SORT = "CHANGE_SORT";
+export const CHANGE_FILTER = "CHANGE_FILTER";

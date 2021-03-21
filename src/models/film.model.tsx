@@ -1,5 +1,17 @@
 import { AnyAction } from "redux";
-import { FilterValues, SortValues } from "../components/StateLine/StateLine";
+
+export enum SortValues {
+  RATING = "vote_average",
+  RELEASE_DATE = "release_date"
+}
+
+export enum FilterValues {
+  ALL = "",
+  DOCUMENTARY = "DOCUMENTARY",
+  COMEDY = "COMEDY",
+  HORROR = "HORROR",
+  CRIME = "CRIME"
+}
 
 export interface IFilmBase {
   title: string;

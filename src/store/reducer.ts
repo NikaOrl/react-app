@@ -1,13 +1,18 @@
 import { AnyAction } from "redux";
-import { FilterValues, SortValues } from "../components/StateLine/StateLine";
-import { FilmState, IFilm } from "../models/film.model";
+
+import {
+  FilmState,
+  IFilm,
+  FilterValues,
+  SortValues
+} from "../models/film.model";
 import * as actionTypes from "./actionTypes";
 
 const initialState: FilmState = {
   loading: false,
   films: [],
   error: null,
-  sort: SortValues.RATING,
+  sort: SortValues.RELEASE_DATE,
   filter: FilterValues.ALL
 };
 
@@ -107,6 +112,18 @@ const reducer = (
         ...state,
         loading: false,
         error: action.error
+      };
+
+    case actionTypes.CHANGE_SORT:
+      return {
+        ...state,
+        sort: action.sort
+      };
+
+    case actionTypes.CHANGE_FILTER:
+      return {
+        ...state,
+        filter: action.filter
       };
   }
   return state;

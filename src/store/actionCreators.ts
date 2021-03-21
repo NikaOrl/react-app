@@ -1,4 +1,11 @@
-import { IFilm, DispatchType, IFilmBase } from "../models/film.model";
+import {
+  IFilm,
+  DispatchType,
+  IFilmBase,
+  FilterValues,
+  SortValues,
+  FilmState
+} from "../models/film.model";
 import * as actionTypes from "./actionTypes";
 
 export function addFilm(film: IFilmBase) {
@@ -63,10 +70,15 @@ export function editFilm(film: IFilm) {
 }
 
 export const getFilms = () => {
-  return (dispatch: DispatchType) => {
+  return (dispatch: DispatchType, getState: () => FilmState) => {
     dispatch(filmsStarted());
 
-    fetch("http://localhost:4000/movies")
+    const sort: SortValues = getState().sort;
+    const filter: FilterValues = getState().filter;
+
+    fetch(
+      `http://localhost:4000/movies?sortBy=${sort}&filter=${filter}&sortOrder=desc`
+    )
       .then(response => response.json())
       .then(res => {
         dispatch(getFilmsSuccess(res.data));
@@ -124,4 +136,14 @@ const filmsStarted = () => ({
 const filmsFailure = (error: Error) => ({
   type: actionTypes.FILMS_FAILURE,
   error
+});
+
+export const changeSort = (id: string) => ({
+  type: actionTypes.CHANGE_SORT,
+  sort: id
+});
+
+export const changeFilter = (id: string) => ({
+  type: actionTypes.CHANGE_FILTER,
+  filter: id
 });
