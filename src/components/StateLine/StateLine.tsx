@@ -9,6 +9,14 @@ export enum SortValues {
   RELEASE_DATE = "release_date"
 }
 
+export enum FilterValues {
+  ALL = "ALL",
+  DOCUMENTARY = "DOCUMENTARY",
+  COMEDY = "COMEDY",
+  HORROR = "HORROR",
+  CRIME = "CRIME"
+}
+
 interface StateLineProps {
   handleSortChange: (id: string) => void;
 }
@@ -18,27 +26,27 @@ const StateLine: React.FC<StateLineProps> = (props: StateLineProps) => {
     {
       title: "ALL",
       isChecked: true,
-      id: "0"
+      id: FilterValues.ALL
     },
     {
       title: "DOCUMENTARY",
       isChecked: false,
-      id: "1"
+      id: FilterValues.DOCUMENTARY
     },
     {
       title: "COMEDY",
       isChecked: false,
-      id: "2"
+      id: FilterValues.COMEDY
     },
     {
       title: "HORROR",
       isChecked: false,
-      id: "3"
+      id: FilterValues.HORROR
     },
     {
       title: "CRIME",
       isChecked: false,
-      id: "4"
+      id: FilterValues.CRIME
     }
   ];
 

@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { Dispatch, useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { IFilm } from "../../models/film.model";
+import { FilmState, IFilm } from "../../models/film.model";
+import { getFilms } from "../../store/actionCreators";
 import FilmPreview from "../FilmPreview/FilmPreview";
 import { SortValues } from "../StateLine/StateLine";
 
@@ -20,35 +22,35 @@ const sortFilms = (filmsToSort: IFilm[], sort: SortValues) =>
   });
 
 const FilmsList: React.FC<FilmsListProps> = (props: FilmsListProps) => {
-  const [films, setFilms] = React.useState(props.films);
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const films: IFilm[] = useSelector(
+    (state: FilmState) => state.films,
+    shallowEqual
+  );
 
   useEffect(() => {
-    setFilms(props.films);
-  }, [props.films]);
+    dispatch(getFilms());
+  }, []);
 
-  const handleDelete = (id: number) => {
-    const filteredFilms = films.filter((film: IFilm) => film.id !== id);
-    setFilms(filteredFilms);
-  };
+  // const handleDelete = (id: number) => {
+  //   const filteredFilms = films.filter((film: IFilm) => film.id !== id);
+  //   setFilms(filteredFilms);
+  // };
 
-  const handleEdit = (film: IFilm) => {
-    const editedFilms = films.map((filmItem: IFilm) =>
-      filmItem.id === film.id ? film : filmItem
-    );
-    setFilms(editedFilms);
-  };
+  // const handleEdit = (film: IFilm) => {
+  //   const editedFilms = films.map((filmItem: IFilm) =>
+  //     filmItem.id === film.id ? film : filmItem
+  //   );
+  //   setFilms(editedFilms);
+  // };
 
   return (
     <div className="films">
       <div className="films__count">{films.length} movies found</div>
       <div className="films__list">
         {sortFilms(films, props.sort).map((movie: IFilm) => (
-          <FilmPreview
-            film={movie}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-            key={movie.id}
-          />
+          <FilmPreview film={movie} key={movie.id} />
         ))}
       </div>
     </div>

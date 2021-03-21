@@ -13,8 +13,6 @@ import MySVG from "-!svg-react-loader!../../assets/kebab-menu.svg";
 
 interface FilmPreviewProps {
   film: IFilm;
-  onDelete: (id: number) => void;
-  onEdit: (film: IFilm) => void;
 }
 
 const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
@@ -46,12 +44,7 @@ const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
     setOpenDeleteModal(false);
   };
 
-  const handleDelete = () => {
-    props.onDelete(props.film.id);
-  };
-
-  const handleEdit = (film: IFilm) => {
-    props.onEdit(film);
+  const handleClose = () => {
     handleCloseEditModal();
     handleMenuClose();
   };
@@ -59,10 +52,10 @@ const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
   return (
     <div className="item-preview">
       <ModalWindow open={openEditModal} onClose={handleCloseEditModal}>
-        <EditMovieModal film={props.film} onEdit={handleEdit} />
+        <EditMovieModal film={props.film} onEdit={handleClose} />
       </ModalWindow>
       <ModalWindow open={openDeleteModal} onClose={handleCloseDeleteModal}>
-        <DeleteMovieModal onDelete={handleDelete} />
+        <DeleteMovieModal film={props.film} onDelete={handleClose} />
       </ModalWindow>
       <Button
         aria-controls="simple-menu"

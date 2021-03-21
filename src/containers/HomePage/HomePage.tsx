@@ -13,11 +13,9 @@ const HomePage = () => {
     setSort(sort as SortValues);
   };
 
-  const onAdd = () => {}; // TODO: add logic with redux to avoid quite stupid logic
-
   return (
     <>
-      <Header handleAdd={onAdd} />
+      <Header />
       <StateLine handleSortChange={handleSortChange} />
       <FilmsErrorBoundary>
         <FilmsContainer sort={sort}></FilmsContainer>

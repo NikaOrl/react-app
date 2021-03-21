@@ -1,13 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-// ...
+import { createStore, applyMiddleware, Store, AnyAction } from "redux";
+import thunk from "redux-thunk";
 
-const store = configureStore({
-  reducer: {
-    one: oneSlice.reducer,
-    two: twoSlice.reducer
-  }
-});
+import { DispatchType, FilmState } from "../models/film.model";
+import reducer from "./reducer";
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const store: Store<FilmState, AnyAction> & {
+  dispatch: DispatchType;
+} = createStore(reducer, applyMiddleware(thunk));

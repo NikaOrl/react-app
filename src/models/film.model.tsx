@@ -1,19 +1,30 @@
-export interface IFilm {
-  id: number;
+import { AnyAction } from "redux";
+import { FilterValues, SortValues } from "../components/StateLine/StateLine";
+
+export interface IFilmBase {
   title: string;
   poster_path: string;
   release_date: string;
   genres: string[];
   overview: string;
+  tagline?: string;
+  vote_average?: number;
+  vote_count?: number;
+  budget?: number;
+  revenue?: number;
+  runtime: number;
 }
 
-type FilmState = {
+export interface IFilm extends IFilmBase {
+  id: number;
+}
+
+export type FilmState = {
+  loading: boolean;
   films: IFilm[];
+  error?: any;
+  sort: SortValues;
+  filter: FilterValues;
 };
 
-type FilmAction = {
-  type: string;
-  film: IFilm;
-};
-
-type DispatchType = (args: FilmAction) => FilmAction;
+export type DispatchType = (args: AnyAction) => AnyAction;
