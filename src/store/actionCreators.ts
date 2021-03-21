@@ -89,28 +89,8 @@ export const getFilms = () => {
   };
 };
 
-export const getFilm = (film: IFilm) => {
-  return (dispatch: DispatchType) => {
-    dispatch(filmsStarted());
-
-    fetch(`http://localhost:4000/movies/${film.id}`)
-      .then(response => response.json())
-      .then(res => {
-        dispatch(getFilmSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(filmsFailure(err.message));
-      });
-  };
-};
-
 const getFilmsSuccess = (films: IFilm[]) => ({
-  type: actionTypes.GET_FILMS_SUCCESS,
-  films
-});
-
-const getFilmSuccess = (films: IFilm[]) => ({
-  type: actionTypes.GET_FILM_SUCCESS,
+  type: actionTypes.GET_FILMS,
   films
 });
 

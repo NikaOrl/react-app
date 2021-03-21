@@ -85,15 +85,7 @@ const reducer = (
         films: editedFilms
       };
 
-    // case actionTypes.GET_FILM_SUCCESS:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     error: null,
-    //     film: action.film
-    //   };
-
-    case actionTypes.GET_FILMS_SUCCESS:
+    case actionTypes.GET_FILMS:
       return {
         ...state,
         loading: false,
