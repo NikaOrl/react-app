@@ -2,7 +2,7 @@
 
 .MuiTextField-root {
   display: block !important;
-  padding: 20px 60px !important;
+  padding: 10px 60px !important;
 
   label,
   .Mui-focused {
@@ -11,12 +11,12 @@
   }
 
   .MuiInputLabel-outlined.MuiInputLabel-shrink {
-    transform: translate(70px, 10px) scale(0.75);
-    font-size: 22px;
+    transform: translate(70px, 4px) scale(0.75);
+    font-size: 18px;
   }
 
   .MuiInputLabel-outlined {
-    transform: translate(74px, 40px) scale(1);
+    transform: translate(74px, 22px) scale(1);
   }
 
   .MuiOutlinedInput-root {
@@ -24,6 +24,7 @@
     background-color: $grey;
     font-size: 18px;
     color: $white !important;
+    height: 40px;
 
     input:disabled {
       background-color: $dark-grey;
