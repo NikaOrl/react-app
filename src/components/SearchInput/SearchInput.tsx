@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 import "./SearchInput.scss";
 
-const SearchInput = () => {
+const SearchInput: React.FC = () => {
   return (
     <div className="search">
       <div className="search__input-group">

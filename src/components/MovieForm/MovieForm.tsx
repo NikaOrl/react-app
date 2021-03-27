@@ -3,13 +3,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 
 import Button from "../Button/Button";
-import { IFilm } from "../../models/film.model";
+import { IFilm, IFilmBase } from "../../models/film.model";
 
 import "./MovieForm.scss";
 
-interface Props {
+interface MovieFormProps {
   film?: IFilm;
-  onSubmit: (film: IFilm) => void;
+  onSubmit: (film: IFilm | IFilmBase) => void;
 }
 
 const genres = [
@@ -31,7 +31,7 @@ const genres = [
   }
 ];
 
-const MovieForm = (props: Props) => {
+const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => {
   const [title, setTitle] = React.useState(props.film ? props.film.title : "");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,26 +72,29 @@ const MovieForm = (props: Props) => {
     setGenre(event.target.value);
   };
 
-  const [overview, setOverview] = React.useState("");
+  const [overview, setOverview] = React.useState(
+    props.film ? props.film.overview : ""
+  );
 
   const handleOverviewChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOverview(event.target.value);
   };
 
-  const [runtime, setRuntime] = React.useState("");
+  const [runtime, setRuntime] = React.useState(0);
 
   const handleRuntimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRuntime(event.target.value);
+    setRuntime(+event.target.value);
   };
 
   const handleSubmit = () => {
     props.onSubmit({
-      id: props.film ? props.film.id : Math.random(),
+      id: props.film ? props.film.id : undefined,
       title: title,
       genres: [genre],
       poster_path: url,
       release_date: selectedDate,
-      overview: overview
+      overview: overview,
+      runtime: runtime
     });
   };
 
@@ -106,7 +109,7 @@ const MovieForm = (props: Props) => {
     setUrl("");
     setGenre("");
     setOverview("");
-    setRuntime("");
+    setRuntime(0);
   };
 
   return (
@@ -163,6 +166,7 @@ const MovieForm = (props: Props) => {
         variant="outlined"
         value={runtime}
         onChange={handleRuntimeChange}
+        type="number"
       />
       <div className="movie-form__buttons-container">
         <Button title="RESET" theme="grey" onClick={handleReset} />

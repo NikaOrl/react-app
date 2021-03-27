@@ -1,19 +1,33 @@
-import React from "react";
+import React, { Dispatch } from "react";
+import { useDispatch } from "react-redux";
 
 import MovieForm from "../MovieForm/MovieForm";
-import { IFilm } from "../../models/film.model";
+import { IFilm, IFilmBase } from "../../models/film.model";
+import { addFilm } from "../../store/actionCreators";
 
 import "./AddMovieModal.scss";
 
 interface AddMovieModalProps {
-  onAdd: (film: IFilm) => void;
+  onAdd: () => void;
 }
 
-const AddMovieModal = (props: AddMovieModalProps) => {
+const AddMovieModal: React.FC<AddMovieModalProps> = (
+  props: AddMovieModalProps
+) => {
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const handleAddFilm = React.useCallback(
+    (film: IFilm | IFilmBase) => {
+      dispatch(addFilm(film as IFilmBase));
+      props.onAdd();
+    },
+    [dispatch]
+  );
+
   return (
     <div className="add-modal">
       <h1 className="add-modal__header">ADD MOVIE</h1>
-      <MovieForm onSubmit={props.onAdd} />
+      <MovieForm onSubmit={handleAddFilm} />
     </div>
   );
 };

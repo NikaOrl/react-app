@@ -10,7 +10,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = (props: ButtonProps) => {
+const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
     <button
       style={{ height: props.height, width: props.width }}

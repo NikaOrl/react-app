@@ -1,23 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
 
-import filmsMock from "../mocks/films.json";
 import { IFilm } from "../models/film.model";
 
 // asynchronous data get function
-export const fetchFilms = () => {
-  return new Promise((resolve: (value: unknown) => void) =>
-    setTimeout(() => resolve(filmsMock as IFilm[]), 1000)
+export const fetchFilm = () => {
+  const id = 354912;
+  return fetch(`http://localhost:4000/movies/${id}`).then(response =>
+    response.json()
   );
 };
 
 export const useAsync = (asyncFunction: () => any) => {
-  const [value, setValue] = useState<any>([]);
+  const [value, setValue] = useState<IFilm>((undefined as unknown) as IFilm);
 
   const execute = useCallback(() => {
-    setValue([]);
-
     return asyncFunction()
-      .then((response: any) => {
+      .then((response: IFilm) => {
         setValue(response);
       })
       .catch((error: Error) => {

@@ -1,44 +1,38 @@
-import React from "react";
+import React, { Dispatch } from "react";
 
 import RadioButton from "../RadioButton/RadioButton";
+import { FilterValues, SortValues } from "../../models/film.model";
 
 import "./StateLine.scss";
+import { useDispatch } from "react-redux";
+import { changeFilter, changeSort, getFilms } from "../../store/actionCreators";
 
-export enum SortValues {
-  RATING = "rating",
-  RELEASE_DATE = "release_date"
-}
-
-interface StateLineProps {
-  handleSortChange: (id: string) => void;
-}
-
-const StateLine = (props: StateLineProps) => {
+const StateLine: React.FC = () => {
   const genreOptions = [
     {
       title: "ALL",
       isChecked: true,
-      id: "0"
+      id: FilterValues.ALL
     },
     {
       title: "DOCUMENTARY",
       isChecked: false,
-      id: "1"
+      id: FilterValues.DOCUMENTARY
     },
     {
       title: "COMEDY",
       isChecked: false,
-      id: "2"
+      id: FilterValues.COMEDY
     },
     {
       title: "HORROR",
       isChecked: false,
-      id: "3"
+      id: FilterValues.HORROR
     },
     {
       title: "CRIME",
       isChecked: false,
-      id: "4"
+      id: FilterValues.CRIME
     }
   ];
 
@@ -55,7 +49,23 @@ const StateLine = (props: StateLineProps) => {
     }
   ];
 
-  const handleGanreChange = (id: string) => {};
+  const dispatch: Dispatch<any> = useDispatch();
+
+  const handleGanreChange = React.useCallback(
+    (id: string) => {
+      dispatch(changeFilter(id));
+      dispatch(getFilms());
+    },
+    [dispatch]
+  );
+
+  const handleSortChange = React.useCallback(
+    (id: string) => {
+      dispatch(changeSort(id));
+      dispatch(getFilms());
+    },
+    [dispatch]
+  );
 
   return (
     <div className="state-line">
@@ -63,7 +73,7 @@ const StateLine = (props: StateLineProps) => {
       <RadioButton
         title="SORT BY"
         options={sorftOptions}
-        onValueChange={props.handleSortChange}
+        onValueChange={handleSortChange}
       />
     </div>
   );

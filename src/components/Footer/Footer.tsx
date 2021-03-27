@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Footer.scss";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return <footer>NETFLIX ROULETTE</footer>;
 };
 

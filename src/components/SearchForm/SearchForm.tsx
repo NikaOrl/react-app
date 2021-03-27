@@ -4,7 +4,7 @@ import SearchInput from "../SearchInput/SearchInput";
 
 import "./SearchForm.scss";
 
-const SearchForm = () => {
+const SearchForm: React.FC = () => {
   return (
     <div className="search-form">
       <h1>FIND YOUR MOVIE</h1>
