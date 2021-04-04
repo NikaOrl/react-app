@@ -6,8 +6,11 @@ import { FilterValues, SortValues } from "../../models/film.model";
 import "./StateLine.scss";
 import { useDispatch } from "react-redux";
 import { changeFilter, changeSort, getFilms } from "../../store/actionCreators";
+import { useParams } from "react-router-dom";
 
 const StateLine: React.FC = () => {
+  let { search } = useParams() as { search: string };
+
   const genreOptions = [
     {
       title: "ALL",
@@ -54,17 +57,17 @@ const StateLine: React.FC = () => {
   const handleGanreChange = React.useCallback(
     (id: string) => {
       dispatch(changeFilter(id));
-      dispatch(getFilms());
+      dispatch(getFilms(search));
     },
-    [dispatch]
+    [dispatch, search]
   );
 
   const handleSortChange = React.useCallback(
     (id: string) => {
       dispatch(changeSort(id));
-      dispatch(getFilms());
+      dispatch(getFilms(search));
     },
-    [dispatch]
+    [dispatch, search]
   );
 
   return (

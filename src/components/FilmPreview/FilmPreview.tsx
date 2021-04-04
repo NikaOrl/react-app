@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -16,6 +17,8 @@ interface FilmPreviewProps {
 }
 
 const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
+  let history = useHistory();
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openEditModal, setOpenEditModal] = React.useState(false);
   const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
@@ -49,6 +52,11 @@ const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
     handleMenuClose();
   };
 
+  const openFilm = () => {
+    handleMenuClose();
+    history.push(`/film/${props.film.id}`);
+  };
+
   return (
     <div className="item-preview">
       <ModalWindow open={openEditModal} onClose={handleCloseEditModal}>
@@ -78,6 +86,7 @@ const FilmPreview: React.FC<FilmPreviewProps> = (props: FilmPreviewProps) => {
         className="item-preview__poster"
         src={props.film.poster_path}
         alt={props.film.title}
+        onClick={openFilm}
       />
       <div className="item-preview__title">
         <div>

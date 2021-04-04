@@ -1,11 +1,15 @@
 import React, { Dispatch, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 import { FilmState, IFilm } from "../../models/film.model";
 import { getFilms } from "../../store/actionCreators";
 import FilmsList from "../../components/FilmsList/FilmsList";
+import NoMoviesFound from "../../components/NoMoviesFound/NoMoviesFound";
 
 const FilmsContainer: React.FC = () => {
+  let { search } = useParams() as { search: string };
+
   const dispatch: Dispatch<any> = useDispatch();
 
   const films: IFilm[] = useSelector(
@@ -14,10 +18,10 @@ const FilmsContainer: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(getFilms());
-  }, []);
+    dispatch(getFilms(search));
+  }, [search]);
 
-  return <FilmsList films={films} />;
+  return films.length > 0 ? <FilmsList films={films} /> : <NoMoviesFound />;
 };
 
 export default FilmsContainer;

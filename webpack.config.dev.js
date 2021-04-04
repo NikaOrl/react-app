@@ -11,10 +11,12 @@ module.exports = {
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist")
+    contentBase: path.resolve(__dirname, "./dist"),
+    historyApiFallback: true
   },
   module: {
     rules: [
