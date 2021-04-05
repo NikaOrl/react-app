@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import AddMovieModal from "../AddMovieModal/AddMovieModal";
 import Button from "../Button/Button";
@@ -9,6 +10,8 @@ import FilmItem from "../FilmItem/FilmItem";
 import "./Header.scss";
 
 const Header: React.FC = () => {
+  let history = useHistory();
+
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -19,21 +22,32 @@ const Header: React.FC = () => {
     setOpen(false);
   };
 
+  const openSearch = () => {
+    history.push("/");
+  };
+
   return (
     <header>
-      <div className="header-links">
-        <div className="header-links__logo">NETFLIX ROULETTE</div>
-        <Button title="Search" theme="grey"></Button>
-      </div>
+      <Switch>
+        <Route path="/film/:id">
+          <div className="header-links">
+            <div className="header-links__logo">NETFLIX ROULETTE</div>
+            <Button title="Search" theme="grey" onClick={openSearch}></Button>
+          </div>
+          <FilmItem />
+        </Route>
 
-      <ModalWindow open={open} onClose={handleClose}>
-        <AddMovieModal onAdd={handleClose} />
-      </ModalWindow>
-      <div className="add-button">
-        <Button title="+ ADD MOVIE" theme="grey" onClick={handleOpen} />
-      </div>
-      <SearchForm />
-      <FilmItem />
+        <Route exact path={["/", "/search/:search"]}>
+          <ModalWindow open={open} onClose={handleClose}>
+            <AddMovieModal onAdd={handleClose} />
+          </ModalWindow>
+          <div className="header-links">
+            <div className="header-links__logo">NETFLIX ROULETTE</div>
+            <Button title="+ ADD MOVIE" theme="grey" onClick={handleOpen} />
+          </div>
+          <SearchForm />
+        </Route>
+      </Switch>
     </header>
   );
 };
