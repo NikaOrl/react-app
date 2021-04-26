@@ -8,7 +8,7 @@ import {
 } from "../models/film.model";
 import * as actionTypes from "./actionTypes";
 
-const initialState: FilmState = {
+export const initialState: FilmState = {
   loading: false,
   films: [],
   error: null,
@@ -29,13 +29,11 @@ const reducer = (
         release_date: action.film.release_date,
         genres: action.film.genres,
         overview: action.film.overview,
-        tagline: action.film.tagline ? action.film.tagline : null,
-        vote_average: action.film.vote_average
-          ? action.film.vote_average
-          : null,
-        vote_count: action.film.vote_count ? action.film.vote_count : null,
-        budget: action.film.budget ? action.film.budget : null,
-        revenue: action.film.revenue ? action.film.revenue : null,
+        tagline: action.film.tagline,
+        vote_average: action.film.vote_average,
+        vote_count: action.film.vote_count,
+        budget: action.film.budget,
+        revenue: action.film.revenue,
         runtime: action.film.runtime
       };
       return {
@@ -64,13 +62,11 @@ const reducer = (
         release_date: action.film.release_date,
         genres: action.film.genres,
         overview: action.film.overview,
-        tagline: action.film.tagline ? action.film.tagline : null,
-        vote_average: action.film.vote_average
-          ? action.film.vote_average
-          : null,
-        vote_count: action.film.vote_count ? action.film.vote_count : null,
-        budget: action.film.budget ? action.film.budget : null,
-        revenue: action.film.revenue ? action.film.revenue : null,
+        tagline: action.film.tagline,
+        vote_average: action.film.vote_average,
+        vote_count: action.film.vote_count,
+        budget: action.film.budget,
+        revenue: action.film.revenue,
         runtime: action.film.runtime
       };
 

@@ -12,7 +12,7 @@ export function addFilm(film: IFilmBase) {
   return (dispatch: DispatchType) => {
     dispatch(filmsStarted());
 
-    fetch("http://localhost:4000/movies", {
+    return fetch("http://localhost:4000/movies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -33,12 +33,15 @@ export function removeFilm(film: IFilm) {
   return (dispatch: DispatchType) => {
     dispatch(filmsStarted());
 
-    fetch(`http://localhost:4000/movies/${film.id}`, {
+    return fetch(`http://localhost:4000/movies/${film.id}`, {
       method: "DELETE"
     })
-      .then(response =>
-        response.status === 204 ? "success" : new Error("something went wrong")
-      )
+      .then(response => {
+        if (response.status === 204) {
+          return "success";
+        }
+        throw { message: "something went wrong" };
+      })
       .then(res => {
         dispatch(deleteFilmSuccess(film));
       })
@@ -52,7 +55,7 @@ export function editFilm(film: IFilm) {
   return (dispatch: DispatchType) => {
     dispatch(filmsStarted());
 
-    fetch("http://localhost:4000/movies", {
+    return fetch("http://localhost:4000/movies", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -76,11 +79,11 @@ export const getFilms = (search: string) => {
     const sort: SortValues = getState().sort;
     const filter: FilterValues = getState().filter;
 
-    const filterParam = filter.length > 0 ? `&filter=${filter}` : "";
+    const filterParam = filter && filter.length > 0 ? `&filter=${filter}` : "";
     const searchParam =
       search && search.length > 0 ? `&search=${search}&searchBy=title` : "";
 
-    fetch(
+    return fetch(
       `http://localhost:4000/movies?sortBy=${sort}${filterParam}&sortOrder=desc${searchParam}`
     )
       .then(response => response.json())

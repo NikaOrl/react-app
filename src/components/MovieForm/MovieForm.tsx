@@ -15,7 +15,7 @@ interface MovieFormProps {
   onSubmit: (film: IFilm | IFilmBase) => void;
 }
 
-const genres = [
+export const genres = [
   "Action",
   "Adventure",
   "Comedy",
@@ -24,6 +24,10 @@ const genres = [
   "Horror",
   "Science Fiction"
 ];
+
+interface MySelectDisplayProps extends React.HTMLAttributes<HTMLDivElement> {
+  "data-testid"?: string;
+}
 
 const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => {
   const MovieFormSchema = Yup.object().shape({
@@ -136,7 +140,10 @@ const MovieForm: React.FC<MovieFormProps> = (props: MovieFormProps) => {
           select
           SelectProps={{
             multiple: true,
-            renderValue: selected => (selected as string[]).join(", ")
+            renderValue: selected => (selected as string[]).join(", "),
+            SelectDisplayProps: {
+              "data-testid": "id-country"
+            } as MySelectDisplayProps
           }}
           onChange={evt => {
             formik.setFieldValue("genres", evt.target.value);

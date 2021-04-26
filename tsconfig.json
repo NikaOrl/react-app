@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["es6", "dom"],
     "noImplicitThis": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true
   }
 }
