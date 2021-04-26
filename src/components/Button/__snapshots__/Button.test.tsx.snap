@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should set a theme 1`] = `
+<DocumentFragment>
+  <button
+    class="btn grey"
+  >
+    test
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button should take a snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="btn pink"
+  >
+    test
+  </button>
+</DocumentFragment>
+`;
